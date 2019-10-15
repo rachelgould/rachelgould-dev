@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Prist | Gatsby & Prismic Starter`,
-        description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
-    author: `Marguerite Roth | marguerite.io`,
+    title: `Rachel Gould | Analyst, Marketer, Developer`,
+        description: `Multi-disciplinary digital marketing expert and data analyst working in Vancouver, BC.`,
+    author: `Rachel Gould`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
