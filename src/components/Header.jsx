@@ -13,6 +13,7 @@ const HeaderContainer = styled("div")`
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 `
 
 const HeaderLinks = styled("div")`

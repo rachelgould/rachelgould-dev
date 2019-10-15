@@ -36,11 +36,13 @@ const FooterLink = styled("a")`
 `
 
 const Footer = () => (
-    <FooterContainer>
-        <Link to="/">
-            <Logo />
-        </Link>
-    </FooterContainer>
+  <>
+  </>
+    // <FooterContainer>
+    //     <Link to="/">
+    //         <Logo />
+    //     </Link>
+    // </FooterContainer>
 )
 
 export default Footer;
