@@ -119,7 +119,7 @@ const ProjectCardImageContainer = styled("div")`
     background: ${colors.grey200};
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
     position: relative;
     padding-left: 2em;
