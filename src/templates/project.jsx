@@ -54,7 +54,7 @@ const Project = ({ project, meta }) => {
     return (
         <>
             <Helmet
-                title={`${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`}
+                title={`${project.project_title[0].text} | RachelGould.dev`}
                 titleTemplate={`%s | ${meta.title}`}
                 meta={[
                     {
@@ -102,6 +102,11 @@ const Project = ({ project, meta }) => {
                 )}
                 <ProjectBody>
                     {RichText.render(project.project_description)}
+                    <WorkLink to={project.view_more_link.url}>
+                        <Button className="Button--primary">
+                            More about this
+                        </Button>
+                    </WorkLink>
                     <WorkLink to={"/work"}>
                         <Button className="Button--secondary">
                             See other work
@@ -138,6 +143,12 @@ export const query = graphql`
                         project_post_date
                         project_hero_image
                         project_description
+                        view_more_link {
+                          ... on PRISMIC__ExternalLink {
+                              _linkType
+                              url
+                          }
+                        }
                         _meta {
                             uid
                         }

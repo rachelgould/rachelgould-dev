@@ -23,6 +23,12 @@ exports.createPages = async ({ graphql, actions }) => {
                             project_preview_description
                             project_preview_thumbnail
                             project_category
+                            view_more_link {
+                              ... on PRISMIC__ExternalLink {
+                                  _linkType
+                                  url
+                              }
+                            }
                             project_post_date
                             _meta {
                                 uid
