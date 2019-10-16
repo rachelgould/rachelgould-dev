@@ -18,18 +18,18 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 7em;
+    grid-template-columns: repeat(6, auto);
+    grid-gap: 2.5em;
     justify-content: flex-end;
     width: 100%;
     max-width: 200px;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
-        grid-gap: 5.5em;
+        grid-gap: 1em;
     }
 
     @media(max-width: ${dimensions.maxwidthMobile}px) {
-        grid-gap: 2.5em;
+        grid-gap: 1em;
     }
 
     a {
@@ -39,8 +39,8 @@ const HeaderLinks = styled("div")`
         font-weight: 600;
         font-size: 0.95em;
         height: 100%;
-        padding-bottom: 1.25em;
         padding-top: 0.25em;
+        padding-bottom: 1em;
         display: block;
         position: relative;
 
@@ -97,6 +97,11 @@ const Header = () => (
                 </Link>
                 <a href="https://www.linkedin.com/in/regould/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/rachelgould" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <Link
+                    activeClassName="Link--is-active"
+                    to="/contact">
+                    Contact
+                </Link>
             </HeaderLinks>
         </HeaderContent>
     </HeaderContainer>
