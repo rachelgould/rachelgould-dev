@@ -17,8 +17,8 @@ const FooterContainer = styled("div")`
 `
 
 const FooterLink = styled("a")`
-    font-size: 0.75em;
-    color: ${colors.grey700};
+    transition: all 100ms ease-in-out;
+    color: ${colors.purple500};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,23 +26,19 @@ const FooterLink = styled("a")`
     margin-top: 1.5em;
 
      &:hover {
-         color: ${colors.blue900};
-    }
-
-    @keyframes rotate {
-        from {transform: rotate(0deg);}
-        to {transform: rotate(360deg);}
+        transition: all 100ms ease-in-out;
+         color: ${colors.purple600};
     }
 `
 
 const Footer = () => (
-  <>
-  </>
-    // <FooterContainer>
-    //     <Link to="/">
-    //         <Logo />
-    //     </Link>
-    // </FooterContainer>
+    <FooterContainer>
+        <Link to="/">
+            <Logo />
+        </Link>
+        <FooterLink href="mailto:rachel@rachelgould.dev">rachel@rachelgould.dev</FooterLink>
+        Powered by Gatsby.js + Prismic
+    </FooterContainer>
 )
 
 export default Footer;
