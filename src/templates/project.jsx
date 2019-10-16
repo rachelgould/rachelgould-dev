@@ -9,7 +9,7 @@ import Button from "components/_ui/Button";
 import Layout from "components/Layout";
 
 const ProjectHeroContainer = styled("div")`
-    background: ${colors.grey200};
+    // background: ${colors.grey200};
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -29,6 +29,11 @@ const ProjectTitle = styled("div") `
     text-align: center;
 `
 
+const ButtonContainer = styled("div") `
+    display: flex;
+    justify-content: space-evenly;
+`
+
 const ProjectBody = styled("div")`
     max-width: 550px;
     margin: 0 auto;
@@ -40,6 +45,14 @@ const ProjectBody = styled("div")`
         img {
             width: 100%;
         }
+    }
+
+    .tech_stack {
+        color: ${colors.grey800};
+        text-transform: lowercase;
+        font-variant: small-caps;
+        font-weight: bold;
+        text-align: center;
     }
 `
 
@@ -92,26 +105,28 @@ const Project = ({ project, meta }) => {
                 ].concat(meta)}
             />
             <Layout>
-                <ProjectTitle>
-                    {RichText.render(project.project_title)}
-                </ProjectTitle>
                 {project.project_hero_image && (
                     <ProjectHeroContainer>
                         <img src={project.project_hero_image.url} alt="bees" />
                     </ProjectHeroContainer>
                 )}
+                <ProjectTitle>
+                    {RichText.render(project.project_title)}
+                </ProjectTitle>
                 <ProjectBody>
                     {RichText.render(project.project_description)}
-                    <WorkLink to={project.view_more_link.url}>
-                        <Button className="Button--primary">
-                            More about this
-                        </Button>
-                    </WorkLink>
-                    <WorkLink to={"/work"}>
-                        <Button className="Button--secondary">
-                            See other work
-                        </Button>
-                    </WorkLink>
+                    <ButtonContainer>
+                      <WorkLink to={project.view_more_link.url}>
+                          <Button className="Button--primary">
+                              Code on GitHub
+                          </Button>
+                      </WorkLink>
+                      <WorkLink to={"/work"}>
+                          <Button className="Button--primary">
+                              See Other Projects
+                          </Button>
+                      </WorkLink>
+                    </ButtonContainer>
                 </ProjectBody>
             </Layout>
         </>
