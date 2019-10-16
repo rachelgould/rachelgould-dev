@@ -62,6 +62,12 @@ const WorkLink = styled(Link)`
     text-align: center;
 `
 
+const ExternalLink = styled("a")`
+margin-top: 3em;
+display: block;
+text-align: center;
+`
+
 
 const Project = ({ project, meta }) => {
     return (
@@ -116,11 +122,11 @@ const Project = ({ project, meta }) => {
                 <ProjectBody>
                     {RichText.render(project.project_description)}
                     <ButtonContainer>
-                      <WorkLink to={project.view_more_link.url}>
+                      <ExternalLink href={project.view_more_link.url}>
                           <Button className="Button--primary">
                               Code on GitHub
                           </Button>
-                      </WorkLink>
+                      </ExternalLink>
                       <WorkLink to={"/work"}>
                           <Button className="Button--primary">
                               See Other Projects
