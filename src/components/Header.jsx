@@ -95,8 +95,8 @@ const Header = () => (
                     to="/blog">
                     Blog
                 </Link>
-                <a href="https://www.linkedin.com/in/regould/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/rachelgould" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/regould/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/rachelgould" target="_blank" rel="noopener noreferrer">GitHub</a>
             </HeaderLinks>
         </HeaderContent>
     </HeaderContainer>
