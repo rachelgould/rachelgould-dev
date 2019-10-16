@@ -13,8 +13,8 @@ const WorkTitle = styled("h1")`
 const Work = ({ projects, meta }) => (
     <>
         <Helmet
-            title={`Work | Prist, Gatsby & Prismic Starter`}
-            titleTemplate={`%s | Work | Prist, Gatsby & Prismic Starter`}
+            title={`Projects | RachelGould.dev`}
+            titleTemplate={`%s | Projects | RachelGould.dev`}
             meta={[
                 {
                     name: `description`,
@@ -52,7 +52,7 @@ const Work = ({ projects, meta }) => (
         />
         <Layout>
             <WorkTitle>
-                Work
+                Projects
             </WorkTitle>
             <>
                 {projects.map((project, i) => (
