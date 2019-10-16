@@ -90,11 +90,11 @@ const Header = () => (
                     to="/work">
                     Projects
                 </Link>
-                <Link
+                {/* <Link
                     activeClassName="Link--is-active"
                     to="/blog">
                     Blog
-                </Link>
+                </Link> */}
                 <a href="https://www.linkedin.com/in/regould/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/rachelgould" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <Link
