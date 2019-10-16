@@ -7,7 +7,7 @@ import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Button from "components/_ui/Button";
-import About from "components/About";
+// import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
 
@@ -157,13 +157,13 @@ const RenderBody = ({ home, projects, meta }) => (
                 See more work <span>&#8594;</span>
             </WorkAction>
         </Section>
-        <Section>
+        {/* <Section>
             {RichText.render(home.about_title)}
             <About
                 bio={home.about_bio}
                 socialLinks={home.about_links}
             />
-        </Section>
+        </Section> */}
     </>
 );
 
@@ -203,11 +203,6 @@ export const query = graphql`
                             }
                         }
                         content
-                        about_title
-                        about_bio
-                        about_links {
-                            about_link
-                        }
                     }
                 }
             }
