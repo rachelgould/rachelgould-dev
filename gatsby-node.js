@@ -53,6 +53,13 @@ exports.createPages = async ({ graphql, actions }) => {
                         }
                     }
                 }
+                allContacts {
+                  edges {
+                    node {
+                      title
+                    }
+                  }
+                }
             }
         }
     `)
