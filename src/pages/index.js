@@ -135,12 +135,11 @@ const RenderBody = ({ home, projects, meta }) => (
             <>
                 {RichText.render(home.hero_title)}
             </>
-            <a href={home.hero_button_link.url}
-               target="_blank" rel="noopener noreferrer">
+            <Link to={'/resume'}>
                 <Button>
                     {RichText.render(home.hero_button_text)}
                 </Button>
-            </a>
+            </Link>
         </Hero>
         <Section>
             {projects.map((project, i) => (
@@ -214,6 +213,20 @@ export const query = graphql`
                         project_preview_thumbnail
                         project_category
                         project_post_date
+                        _meta {
+                            uid
+                        }
+                    }
+                }
+            }
+            allResumes {
+                edges {
+                    node {
+                        job_title
+                        company_name
+                        job_description
+                        start_date
+                        end_date
                         _meta {
                             uid
                         }
