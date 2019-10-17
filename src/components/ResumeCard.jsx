@@ -48,7 +48,7 @@ const ResumeCardContainer = styled("div")`
             transition: all 150ms ease-in-out;
         }
 
-        .ResumeCardImageContainer::before {
+        .ResumeCardDescripContainer::before {
             opacity: 0.2;
             transition: all 150ms ease-in-out;
         }
@@ -116,7 +116,7 @@ const ResumeCardAction = styled("div")`
     }
 `
 
-const ResumeCardImageContainer = styled("div")`
+const ResumeCardDescripContainer = styled("div")`
     background: ${colors.grey200};
     display: flex;
     justify-content: center;
@@ -183,14 +183,10 @@ const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => 
             <ResumeCardBlurb>
                 {startAndEndDates(startDate, endDate)}
             </ResumeCardBlurb>
-            {/* <ResumeCardAction className="ResumeCardAction">
-                Details <span>&#8594;</span>
-            </ResumeCardAction> */}
         </ResumeCardContent>
-        <ResumeCardImageContainer className="ResumeCardImageContainer">
-            {/* <img src={thumbnail.url} alt={title[0].text}/> */}
+        <ResumeCardDescripContainer className="ResumeCardDescripContainer">
             {RichText.render(description)}
-        </ResumeCardImageContainer>
+        </ResumeCardDescripContainer>
     </ResumeCardContainer>
 )
 
