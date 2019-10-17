@@ -164,6 +164,11 @@ const startAndEndDates = (startDate, endDate) => {
     return (
       start.format('MMM YYYY') + ' - current'
     )
+  } else if (start > moment.now()) {
+    // I set the start date to be in the future if you only want to show the end date (i.e. for the education section)
+    return (
+      'Graduated ' + end.format('YYYY')
+    )
   } else {
     return (
       start.format('MMM YYYY') + ' - ' + end.format('MMM YYYY')
