@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const ResumeCardContainer = styled("div")`
     display: grid;
@@ -158,10 +159,17 @@ const ResumeCardImageContainer = styled("div")`
 `
 
 const startAndEndDates = (startDate, endDate) => {
-  // let start = new Date(startDate)
-  return (
-    startDate
-  )
+  let start = moment(startDate);
+  let end = moment(endDate);
+  if (end > moment.now()) {
+    return (
+      start.format('MMM YYYY') + ' - current'
+    )
+  } else {
+    return (
+      start.format('MMM YYYY') + ' - ' + end.format('MMM YYYY')
+    )
+  }
 }
 
 const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => (
