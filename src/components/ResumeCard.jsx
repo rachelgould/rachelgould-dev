@@ -16,6 +16,24 @@ const ResumeCardContainer = styled("div")`
     text-decoration: none;
     color: currentColor;
 
+    span.development_skill {
+      color: ${colors.purple600}; 
+      background: ${colors.purple200};
+      font-weight: bold;
+    }
+
+    span.data_skill {
+      color: ${colors.orange600}; 
+      background: ${colors.orange200};
+      font-weight: bold;
+    }
+
+    span.marketing_skill {
+      color: ${colors.green600}; 
+      background: ${colors.green200};
+      font-weight: bold;
+    }
+
     @media(max-width:950px) {
         grid-template-columns: 4.5fr 7fr;
     }
