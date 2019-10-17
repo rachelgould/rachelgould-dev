@@ -121,14 +121,13 @@ const ResumeCardImageContainer = styled("div")`
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     position: relative;
     padding-left: 2em;
     padding-right: 2em;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         padding-top: 3em;
-        max-height: 200px;
+        padding-bottom: 3em;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
