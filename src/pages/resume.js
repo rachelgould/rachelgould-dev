@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
@@ -11,7 +11,7 @@ const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
 `
 
-const Resume = ({ entries, education, meta }) => (
+const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }) => (
     <>
         <Helmet
             title={`Resume | RachelGould.dev`}
@@ -55,7 +55,7 @@ const Resume = ({ entries, education, meta }) => (
             <ResumeTitle>
                 Highlighted Skills
             </ResumeTitle>
-            <SkillsGrid />
+            <SkillsGrid onSelect={highlightSkills} highlightedSkills={highlightedSkills} />
             <ResumeTitle>
                 Work Experience
             </ResumeTitle>
@@ -98,8 +98,18 @@ export default ({ data }) => {
     const meta = data.site.siteMetadata;
     if (!resumeEntries) return null;
 
+    const [activeSkills, setActiveSkills] = useState({
+      data: false,
+      dev: false,
+      marketing: false
+    })
+
+    const highlightSkills = () => {
+      return 0;
+    }
+
     return (
-        <Resume entries={resumeEntries} education={educationEntries} meta={meta}/>
+        <Resume entries={resumeEntries} education={educationEntries} meta={meta} highlightSkills={highlightSkills} highlightedSkills={activeSkills}/>
     )
 }
 

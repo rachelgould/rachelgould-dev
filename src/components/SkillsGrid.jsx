@@ -4,9 +4,9 @@ import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 
-const ProjectCardContainer = styled(Link)`
+const ProjectCardContainer = styled("div")`
     display: grid;
-    grid-template-columns: 4fr 7fr;
+    grid-template-columns: 3.6fr 3.6fr 3.6fr;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     margin-bottom: 4em;
     transition: all 150ms ease-in-out;
@@ -14,7 +14,7 @@ const ProjectCardContainer = styled(Link)`
     color: currentColor;
 
     @media(max-width:950px) {
-        grid-template-columns: 4.5fr 7fr;
+        grid-template-columns: 3.8fr 3.8fr 3.8fr;
     }
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
@@ -24,38 +24,78 @@ const ProjectCardContainer = styled(Link)`
     @media(max-width:${dimensions.maxwidthMobile}px) {
         margin-bottom: 2em;
     }
+`
 
+const HoverGroup = styled("div")`
     &:hover {
-        box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
-        transition: all 150ms ease-in-out;
+      box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
+      transition: all 150ms ease-in-out;
 
-        .ProjectCardAction {
-            color: ${colors.blue500};
-            transition: all 150ms ease-in-out;
+      .ProjectCardAction.data {
+          color: ${colors.orange600};
+      }
 
-            span {
-                transform: translateX(0px);
-                opacity: 1;
-                transition: transform 150ms ease-in-out;
-            }
-        }
+      .ProjectCardAction.marketing {
+          color: ${colors.green600};
+      }
 
-        .ProjectCardContent::before {
-            opacity: 0.02;
-            transition: all 150ms ease-in-out;
-        }
+      .ProjectCardAction.development {
+          color: ${colors.purple600};
+      }
 
-        .ProjectCardImageContainer::before {
-            opacity: 0.2;
-            transition: all 150ms ease-in-out;
-        }
-    }
+      .ProjectCardAction {
+          transition: all 150ms ease-in-out;
+
+          span {
+              transform: translateX(0px);
+              opacity: 1;
+              transition: transform 150ms ease-in-out;
+          }
+      }
+
+      .ProjectCardContent::before {
+          opacity: 0.02;
+          transition: all 150ms ease-in-out;
+      }
+
+      .ProjectCardImageContainer::before {
+          opacity: 0.2;
+          transition: all 150ms ease-in-out;
+      }
+
+      .ProjectCardTitle.data {
+          transition: all 150ms ease-in-out;
+          color: ${colors.orange600};  
+      }
+
+      .ProjectCardTitle.development {
+          transition: all 150ms ease-in-out;
+          color: ${colors.purple600};  
+      }
+      .ProjectCardTitle.marketing {
+          transition: all 150ms ease-in-out;
+          color: ${colors.green600};  
+      }
+  }
 `
 
 const ProjectCardContent = styled("div")`
     background: white;
     padding: 4em 3em 2.25em 3em;
     position: relative;
+    height: 100%;
+
+    .data&:before {
+      background: ${colors.orange600};
+    }
+
+    .marketing&:before {
+      background: ${colors.green600};
+    }
+
+    .development&:before {
+      background: ${colors.purple600};
+    }
 
     &:before {
         position: absolute;
@@ -64,7 +104,6 @@ const ProjectCardContent = styled("div")`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
@@ -77,11 +116,6 @@ const ProjectCardContent = styled("div")`
     @media(max-width:${dimensions.maxwidthTablet}px) {
         grid-row: 2;
     }
-`
-
-const ProjectCardCategory = styled("h6")`
-    font-weight: 600;
-    color: ${colors.grey600};
 `
 
 const ProjectCardTitle = styled("h3")`
@@ -104,6 +138,9 @@ const ProjectCardAction = styled("div")`
     text-decoration: none;
     color: currentColor;
     transition: all 150ms ease-in-out;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2em;
 
     span {
         margin-left: 1em;
@@ -113,67 +150,71 @@ const ProjectCardAction = styled("div")`
     }
 `
 
-const ProjectCardImageContainer = styled("div")`
-    background: ${colors.grey200};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-    padding-left: 2em;
-    padding-right: 2em;
-
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        padding-top: 3em;
-        max-height: 200px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    &:before {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: ${colors.blue500};
-        mix-blend-mode: multiply;
-        opacity: 0;
-        transition: all 150ms ease-in-out;
-    }
-
-    img {
-        max-width: 400px;
-        width: 100%;
-        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
-
-        @media(max-width:${dimensions.maxwidthTablet}px) {
-            max-width: 300px;
-        }
-    }
-`
-
-const SkillsGrid = () => (
-    <ProjectCardContainer to={`/work/`}>
-        <ProjectCardContent className="ProjectCardContent">
-            <ProjectCardCategory>
-                category
-            </ProjectCardCategory>
-            <ProjectCardTitle>
-                title
-            </ProjectCardTitle>
-            <ProjectCardBlurb>
-                description
-            </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
-                Details <span>&#8594;</span>
-            </ProjectCardAction>
-        </ProjectCardContent>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            img
-        </ProjectCardImageContainer>
+const SkillsGrid = ({ onSelect, highlightedSkills }) => (
+    <ProjectCardContainer>
+      <HoverGroup>
+          <ProjectCardContent className="ProjectCardContent data">
+              <ProjectCardTitle className="ProjectCardTitle data">
+                  Data
+              </ProjectCardTitle>
+              <ProjectCardBlurb>
+                  <ul>
+                    <li>Excel</li>
+                    <li>SQL</li>
+                    <li>MongoDB</li>
+                    <li>Tableau</li>
+                    <li>Google Analytics (Certified)</li>
+                    <li>Google Tag Manager</li>
+                  </ul>
+              </ProjectCardBlurb>
+              <ProjectCardAction className="ProjectCardAction data">
+                  Highlight These <span>&#8594;</span>
+              </ProjectCardAction>
+          </ProjectCardContent>
+        </HoverGroup>
+        <HoverGroup>
+          <ProjectCardContent className="ProjectCardContent development">
+              <ProjectCardTitle className="ProjectCardTitle development">
+                  Development
+              </ProjectCardTitle>
+              <ProjectCardBlurb>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>HTML, CSS, SASS</li>
+                    <li>AWS Lambda, S3, DynamoDB</li>
+                    <li>Serverless</li>
+                    <li>Node.js</li>
+                    <li>React</li>
+                    <li>Gatsby.js</li>
+                    <li>Ruby on Rails</li>
+                    <li>Git/GitHub</li>
+                </ul>
+              </ProjectCardBlurb>
+              <ProjectCardAction className="ProjectCardAction development">
+              Highlight These <span>&#8594;</span>
+              </ProjectCardAction>
+          </ProjectCardContent>
+        </HoverGroup>
+        <HoverGroup>
+          <ProjectCardContent className="ProjectCardContent marketing">
+              <ProjectCardTitle className="ProjectCardTitle marketing">
+                  Marketing
+              </ProjectCardTitle>
+              <ProjectCardBlurb>
+                <ul>
+                    <li>Google, Bing, Facebook Advertising</li>
+                    <li>Marketing Automation Strategy</li>
+                    <li>Pardot, Salesforce</li>
+                    <li>Ontraport</li>
+                    <li>A/B Testing (VWO, Hotjar, Unbounce, Reactful)</li>
+                    <li>SEO, Moz</li>
+                </ul>
+              </ProjectCardBlurb>
+              <ProjectCardAction className="ProjectCardAction marketing">
+              Highlight These <span>&#8594;</span>
+              </ProjectCardAction>
+          </ProjectCardContent>
+        </HoverGroup>
     </ProjectCardContainer>
 )
 
