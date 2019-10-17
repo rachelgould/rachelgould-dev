@@ -100,12 +100,13 @@ export default ({ data }) => {
 
     const [activeSkills, setActiveSkills] = useState({
       data: false,
-      dev: false,
+      development: false,
       marketing: false
     })
 
-    const highlightSkills = () => {
-      return 0;
+    const highlightSkills = (skills) => {
+      console.log('setting skills to this: ', skills)
+      setActiveSkills(skills);
     }
 
     return (

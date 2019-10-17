@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "gatsby";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
@@ -150,9 +149,25 @@ const ProjectCardAction = styled("div")`
     }
 `
 
-const SkillsGrid = ({ onSelect, highlightedSkills }) => (
+const SkillsGrid = ({ onSelect, highlightedSkills }) => {
+
+  const clickSkillGroup = (event) => {
+    let newHighlightedSkills = {...highlightedSkills}
+    event.preventDefault();
+
+    if (event.target.className.includes('data')) {
+      newHighlightedSkills.data = !highlightedSkills.data
+    } else if (event.target.className.includes('development')) {
+      newHighlightedSkills.development = !highlightedSkills.development
+    } else if (event.target.className.includes('marketing')) {
+      newHighlightedSkills.marketing = !highlightedSkills.marketing
+    }
+    onSelect(newHighlightedSkills);
+  }
+
+  return (
     <ProjectCardContainer>
-      <HoverGroup>
+      <HoverGroup onClick={clickSkillGroup}>
           <ProjectCardContent className="ProjectCardContent data">
               <ProjectCardTitle className="ProjectCardTitle data">
                   Data
@@ -172,7 +187,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => (
               </ProjectCardAction>
           </ProjectCardContent>
         </HoverGroup>
-        <HoverGroup>
+        <HoverGroup onClick={clickSkillGroup}>
           <ProjectCardContent className="ProjectCardContent development">
               <ProjectCardTitle className="ProjectCardTitle development">
                   Development
@@ -195,7 +210,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => (
               </ProjectCardAction>
           </ProjectCardContent>
         </HoverGroup>
-        <HoverGroup>
+        <HoverGroup onClick={clickSkillGroup}>
           <ProjectCardContent className="ProjectCardContent marketing">
               <ProjectCardTitle className="ProjectCardTitle marketing">
                   Marketing
@@ -216,6 +231,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => (
           </ProjectCardContent>
         </HoverGroup>
     </ProjectCardContainer>
-)
+  )
+}
 
 export default SkillsGrid;
