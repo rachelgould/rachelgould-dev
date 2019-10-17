@@ -78,7 +78,7 @@ const ResumeCardContent = styled("div")`
     }
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
-        grid-row: 2;
+        grid-row: 1;
     }
 `
 
