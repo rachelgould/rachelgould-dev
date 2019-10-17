@@ -82,7 +82,7 @@ const Project = ({ project, meta }) => {
                     },
                     {
                         property: `og:title`,
-                        content: `${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`,
+                        content: `${project.project_title[0].text} | RachelGould.dev`,
                     },
                     {
                         property: `og:description`,

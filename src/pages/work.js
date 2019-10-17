@@ -22,7 +22,7 @@ const Work = ({ projects, meta }) => (
                 },
                 {
                     property: `og:title`,
-                    content: `Work | Prist, Gatsby & Prismic Starter`,
+                    content: `Projects | RachelGould.dev`,
                 },
                 {
                     property: `og:description`,
