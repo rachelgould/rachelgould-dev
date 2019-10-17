@@ -5,6 +5,7 @@ import { graphql } from "gatsby";
 import styled from "@emotion/styled";
 import Layout from "components/Layout";
 import ResumeCard from "components/ResumeCard";
+import SkillsGrid from "components/SkillsGrid";
 
 const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
@@ -52,7 +53,11 @@ const Resume = ({ entries, education, meta }) => (
         />
         <Layout>
             <ResumeTitle>
-                Resume
+                Highlighted Skills
+            </ResumeTitle>
+            <SkillsGrid />
+            <ResumeTitle>
+                Work Experience
             </ResumeTitle>
             <>
                 {entries.map((entry, i) => (
