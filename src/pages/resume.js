@@ -10,7 +10,7 @@ const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
 `
 
-const Resume = ({ entries, meta }) => (
+const Resume = ({ entries, education, meta }) => (
     <>
         <Helmet
             title={`Resume | RachelGould.dev`}
@@ -67,17 +67,34 @@ const Resume = ({ entries, meta }) => (
                     />
                 ))}
             </>
+            <ResumeTitle>
+                Education
+            </ResumeTitle>
+            <>
+                {education.map((entry, i) => (
+                    <ResumeCard
+                        key={i}
+                        title={entry.node.job_title}
+                        company={entry.node.company_name}
+                        description={entry.node.job_description}
+                        startDate={entry.node.start_date}
+                        endDate={entry.node.end_date}
+                        uid={entry.node._meta.uid}
+                    />
+                ))}
+            </>
         </Layout>
     </>
 );
 
 export default ({ data }) => {
     const resumeEntries = data.prismic.allResumes.edges;
+    const educationEntries = data.prismic.allEducations.edges;
     const meta = data.site.siteMetadata;
     if (!resumeEntries) return null;
 
     return (
-        <Resume entries={resumeEntries} meta={meta}/>
+        <Resume entries={resumeEntries} education={educationEntries} meta={meta}/>
     )
 }
 
@@ -89,6 +106,20 @@ export const query = graphql`
     {
         prismic {
             allResumes {
+                edges {
+                    node {
+                        job_title
+                        company_name
+                        job_description
+                        start_date
+                        end_date
+                        _meta {
+                            uid
+                        }
+                    }
+                }
+            }
+            allEducations {
                 edges {
                     node {
                         job_title
