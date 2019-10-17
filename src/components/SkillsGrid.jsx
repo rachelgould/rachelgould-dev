@@ -26,21 +26,22 @@ const ProjectCardContainer = styled("div")`
 `
 
 const HoverGroup = styled("div")`
+    .ProjectCardAction.data {
+        color: ${colors.orange600};
+    }
+    
+    .ProjectCardAction.marketing {
+        color: ${colors.green600};
+    }
+    
+    .ProjectCardAction.development {
+        color: ${colors.purple600};
+    }
+
     &:hover {
       box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
       transition: all 150ms ease-in-out;
 
-      .ProjectCardAction.data {
-          color: ${colors.orange600};
-      }
-
-      .ProjectCardAction.marketing {
-          color: ${colors.green600};
-      }
-
-      .ProjectCardAction.development {
-          color: ${colors.purple600};
-      }
 
       .ProjectCardAction {
           transition: all 150ms ease-in-out;
@@ -53,7 +54,7 @@ const HoverGroup = styled("div")`
       }
 
       .ProjectCardContent::before {
-          opacity: 0.02;
+          opacity: 0.12;
           transition: all 150ms ease-in-out;
       }
 
