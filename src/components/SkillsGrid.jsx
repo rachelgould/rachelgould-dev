@@ -165,6 +165,10 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
     onSelect(newHighlightedSkills);
   }
 
+  const skillButtonText = (skill) => {
+    return highlightedSkills[skill] ? "Disable Highlighting" : "Highlight"
+  }
+
   return (
     <ProjectCardContainer>
       <HoverGroup onClick={clickSkillGroup}>
@@ -183,7 +187,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
                   </ul>
               </ProjectCardBlurb>
               <ProjectCardAction className="ProjectCardAction data">
-                  Highlight These <span>&#8594;</span>
+                  {skillButtonText('data')} <span>&#8594;</span>
               </ProjectCardAction>
           </ProjectCardContent>
         </HoverGroup>
@@ -206,7 +210,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
                 </ul>
               </ProjectCardBlurb>
               <ProjectCardAction className="ProjectCardAction development">
-              Highlight These <span>&#8594;</span>
+              {skillButtonText('development')} <span>&#8594;</span>
               </ProjectCardAction>
           </ProjectCardContent>
         </HoverGroup>
@@ -226,7 +230,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
                 </ul>
               </ProjectCardBlurb>
               <ProjectCardAction className="ProjectCardAction marketing">
-              Highlight These <span>&#8594;</span>
+              {skillButtonText('marketing')} <span>&#8594;</span>
               </ProjectCardAction>
           </ProjectCardContent>
         </HoverGroup>
