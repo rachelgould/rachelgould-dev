@@ -60,6 +60,20 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                   }
                 }
+                allResumes {
+                    edges {
+                        node {
+                            job_title
+                            company_name
+                            job_description
+                            start_date
+                            end_date
+                            _meta {
+                                uid
+                            }
+                        }
+                    }
+                }
             }
         }
     `)
