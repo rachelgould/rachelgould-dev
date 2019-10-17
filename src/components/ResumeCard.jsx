@@ -6,7 +6,7 @@ import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 
-const ProjectCardContainer = styled(Link)`
+const ResumeCardContainer = styled("div")`
     display: grid;
     grid-template-columns: 4fr 7fr;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
@@ -31,7 +31,7 @@ const ProjectCardContainer = styled(Link)`
         box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
         transition: all 150ms ease-in-out;
 
-        .ProjectCardAction {
+        .ResumeCardAction {
             color: ${colors.blue500};
             transition: all 150ms ease-in-out;
 
@@ -42,19 +42,19 @@ const ProjectCardContainer = styled(Link)`
             }
         }
 
-        .ProjectCardContent::before {
+        .ResumeCardContent::before {
             opacity: 0.02;
             transition: all 150ms ease-in-out;
         }
 
-        .ProjectCardImageContainer::before {
+        .ResumeCardImageContainer::before {
             opacity: 0.2;
             transition: all 150ms ease-in-out;
         }
     }
 `
 
-const ProjectCardContent = styled("div")`
+const ResumeCardContent = styled("div")`
     background: white;
     padding: 4em 3em 2.25em 3em;
     position: relative;
@@ -81,17 +81,17 @@ const ProjectCardContent = styled("div")`
     }
 `
 
-const ProjectCardCategory = styled("h6")`
+const ResumeCardCategory = styled("h6")`
     font-weight: 600;
     color: ${colors.grey600};
 `
 
-const ProjectCardTitle = styled("h3")`
+const ResumeCardTitle = styled("h3")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
 `
 
-const ProjectCardBlurb = styled("div")`
+const ResumeCardBlurb = styled("div")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
     margin-bottom: 5em;
@@ -101,7 +101,7 @@ const ProjectCardBlurb = styled("div")`
     }
 `
 
-const ProjectCardAction = styled("div")`
+const ResumeCardAction = styled("div")`
     font-weight: 600;
     text-decoration: none;
     color: currentColor;
@@ -115,7 +115,7 @@ const ProjectCardAction = styled("div")`
     }
 `
 
-const ProjectCardImageContainer = styled("div")`
+const ResumeCardImageContainer = styled("div")`
     background: ${colors.grey200};
     display: flex;
     justify-content: center;
@@ -157,34 +157,38 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
-    <ProjectCardContainer to={`/work/${uid}`}>
-        <ProjectCardContent className="ProjectCardContent">
-            <ProjectCardCategory>
-                {category[0].text}
-            </ProjectCardCategory>
-            <ProjectCardTitle>
+const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => (
+    <ResumeCardContainer>
+        <ResumeCardContent className="ResumeCardContent">
+            <ResumeCardCategory>
+                {company[0].text}
+            </ResumeCardCategory>
+            <ResumeCardTitle>
                 {title[0].text}
-            </ProjectCardTitle>
-            <ProjectCardBlurb>
-                {RichText.render(description)}
-            </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
+            </ResumeCardTitle>
+            <ResumeCardBlurb>
+                {/* {RichText.render(description)} */}
+                {RichText.render(startDate)}
+                {RichText.render(endDate)}
+            </ResumeCardBlurb>
+            {/* <ResumeCardAction className="ResumeCardAction">
                 Details <span>&#8594;</span>
-            </ProjectCardAction>
-        </ProjectCardContent>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} />
-        </ProjectCardImageContainer>
-    </ProjectCardContainer>
+            </ResumeCardAction> */}
+        </ResumeCardContent>
+        <ResumeCardImageContainer className="ResumeCardImageContainer">
+            {/* <img src={thumbnail.url} alt={title[0].text}/> */}
+            {RichText.render(description)}
+        </ResumeCardImageContainer>
+    </ResumeCardContainer>
 )
 
-export default ProjectCard;
+export default ResumeCard;
 
-ProjectCard.propTypes = {
-    category: PropTypes.array.isRequired,
-    thumbnail: PropTypes.object.isRequired,
+ResumeCard.propTypes = {
     title: PropTypes.array.isRequired,
+    company: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
+    startDate: PropTypes.string.isRequired,
+    endDate: PropTypes.string.isRequired,
     uid: PropTypes.string.isRequired
 }

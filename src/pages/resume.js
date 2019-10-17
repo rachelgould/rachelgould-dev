@@ -52,17 +52,18 @@ const Resume = ({ entries, meta }) => (
         />
         <Layout>
             <ResumeTitle>
-                Projects
+                Resume
             </ResumeTitle>
             <>
-                {entries.map((project, i) => (
+                {entries.map((entry, i) => (
                     <ResumeCard
                         key={i}
-                        category={project.node.project_category}
-                        title={project.node.project_title}
-                        description={project.node.project_preview_description}
-                        thumbnail={project.node.project_preview_thumbnail}
-                        uid={project.node._meta.uid}
+                        title={entry.node.job_title}
+                        company={entry.node.company_name}
+                        description={entry.node.job_description}
+                        startDate={entry.node.start_date}
+                        endDate={entry.node.end_date}
+                        uid={entry.node._meta.uid}
                     />
                 ))}
             </>
@@ -81,7 +82,7 @@ export default ({ data }) => {
 }
 
 Resume.propTypes = {
-    projects: PropTypes.array.isRequired,
+  entries: PropTypes.array.isRequired,
 };
 
 export const query = graphql`
