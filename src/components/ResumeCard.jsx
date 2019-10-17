@@ -47,11 +47,6 @@ const ResumeCardContainer = styled("div")`
             opacity: 0.02;
             transition: all 150ms ease-in-out;
         }
-
-        .ResumeCardDescripContainer::before {
-            opacity: 0.2;
-            transition: all 150ms ease-in-out;
-        }
     }
 `
 
