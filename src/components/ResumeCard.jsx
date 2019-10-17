@@ -157,6 +157,13 @@ const ResumeCardImageContainer = styled("div")`
     }
 `
 
+const startAndEndDates = (startDate, endDate) => {
+  // let start = new Date(startDate)
+  return (
+    startDate
+  )
+}
+
 const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => (
     <ResumeCardContainer>
         <ResumeCardContent className="ResumeCardContent">
@@ -167,9 +174,7 @@ const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => 
                 {title[0].text}
             </ResumeCardTitle>
             <ResumeCardBlurb>
-                {/* {RichText.render(description)} */}
-                {RichText.render(startDate)}
-                {RichText.render(endDate)}
+                {startAndEndDates(startDate, endDate)}
             </ResumeCardBlurb>
             {/* <ResumeCardAction className="ResumeCardAction">
                 Details <span>&#8594;</span>
