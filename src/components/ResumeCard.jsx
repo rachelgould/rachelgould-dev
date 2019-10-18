@@ -189,7 +189,7 @@ const startAndEndDates = (startDate, endDate) => {
   }
 }
 
-const ResumeCard = ({ title, company, description, startDate, endDate, uid}) => (
+const ResumeCard = ({ title, company, description, startDate, endDate, uid, highlightSkills}) => (
     <ResumeCardContainer>
         <ResumeCardContent className="ResumeCardContent">
             <ResumeCardCategory>
