@@ -97,11 +97,8 @@ const Header = () => (
                 </Link> */}
                 <a href="https://www.linkedin.com/in/regould/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/rachelgould" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <Link
-                    activeClassName="Link--is-active"
-                    to="/contact">
-                    Contact
-                </Link>
+                <a href="mailto:rachel@rachelgould.dev">
+                  Email</a>
             </HeaderLinks>
         </HeaderContent>
     </HeaderContainer>
