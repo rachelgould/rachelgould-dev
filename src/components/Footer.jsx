@@ -18,7 +18,7 @@ const FooterContainer = styled("div")`
 
 const FooterLink = styled("a")`
     transition: all 100ms ease-in-out;
-    color: ${colors.purple500};
+    color: ${colors.purple900};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +26,7 @@ const FooterLink = styled("a")`
     margin-top: 1.5em;
 
      &:hover {
-        transition: all 100ms ease-in-out;
+        transition: all 200ms ease-in-out;
          color: ${colors.purple600};
     }
 `
@@ -37,7 +37,7 @@ const Footer = () => (
             <Logo />
         </Link>
         <FooterLink href="mailto:rachel@rachelgould.dev">rachel@rachelgould.dev</FooterLink>
-        Powered by Gatsby.js + Prismic
+        <FooterLink href="https://github.com/rachelgould/rachelgould-dev">View site repo</FooterLink>
     </FooterContainer>
 )
 
