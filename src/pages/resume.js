@@ -11,7 +11,25 @@ const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
 `
 
-const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }) => (
+const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }) => {
+  const makeEntryCards = (entries) => {
+      let sortedEntries = entries.sort((a, b) => (a.node.end_date > b.node.end_date) ? -1 : 1)
+
+      return sortedEntries.map((entry, i) => (
+        <ResumeCard
+            key={i}
+            title={entry.node.job_title}
+            company={entry.node.company_name}
+            description={entry.node.job_description}
+            startDate={entry.node.start_date}
+            endDate={entry.node.end_date}
+            uid={entry.node._meta.uid}
+            highlightSkills={highlightedSkills}
+        />
+    ))
+  }
+
+  return(
     <>
         <Helmet
             title={`Resume | RachelGould.dev`}
@@ -60,39 +78,18 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
                 Work Experience
             </ResumeTitle>
             <>
-                {entries.map((entry, i) => (
-                    <ResumeCard
-                        key={i}
-                        title={entry.node.job_title}
-                        company={entry.node.company_name}
-                        description={entry.node.job_description}
-                        startDate={entry.node.start_date}
-                        endDate={entry.node.end_date}
-                        uid={entry.node._meta.uid}
-                        highlightSkills={highlightedSkills}
-                    />
-                ))}
+                {makeEntryCards(entries)}
             </>
             <ResumeTitle>
                 Education
             </ResumeTitle>
             <>
-                {education.map((entry, i) => (
-                    <ResumeCard
-                        key={i}
-                        title={entry.node.job_title}
-                        company={entry.node.company_name}
-                        description={entry.node.job_description}
-                        startDate={entry.node.start_date}
-                        endDate={entry.node.end_date}
-                        uid={entry.node._meta.uid}
-                        highlightSkills={highlightedSkills}
-                    />
-                ))}
+                {makeEntryCards(education)}
             </>
         </Layout>
     </>
-);
+  )
+};
 
 export default ({ data }) => {
     const resumeEntries = data.prismic.allResumes.edges;
