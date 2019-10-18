@@ -16,19 +16,19 @@ const ResumeCardContainer = styled("div")`
     text-decoration: none;
     color: currentColor;
 
-    span.development_skill {
+    .h-development span.development_skill {
       color: ${colors.purple600}; 
       background: ${colors.purple200};
       font-weight: bold;
     }
 
-    span.data_skill {
+    .h-data span.data_skill {
       color: ${colors.orange600}; 
       background: ${colors.orange200};
       font-weight: bold;
     }
 
-    span.marketing_skill {
+    .h-marketing span.marketing_skill {
       color: ${colors.green600}; 
       background: ${colors.green200};
       font-weight: bold;
@@ -115,20 +115,6 @@ const ResumeCardBlurb = styled("div")`
     }
 `
 
-const ResumeCardAction = styled("div")`
-    font-weight: 600;
-    text-decoration: none;
-    color: currentColor;
-    transition: all 150ms ease-in-out;
-
-    span {
-        margin-left: 1em;
-        transform: translateX(-8px);
-        display: inline-block;
-        transition: transform 400ms ease-in-out;
-    }
-`
-
 const ResumeCardDescripContainer = styled("div")`
     background: ${colors.grey200};
     display: flex;
@@ -190,6 +176,25 @@ const startAndEndDates = (startDate, endDate) => {
 }
 
 const ResumeCard = ({ title, company, description, startDate, endDate, uid, highlightSkills}) => {
+
+  const generateHighlightClasses = () => {
+    let classes = []
+    if (highlightSkills) {
+      if (highlightSkills.data) {
+        classes.push('h-data');
+      }
+      if (highlightSkills.development) {
+        classes.push('h-development');
+      }
+      if (highlightSkills.marketing) {
+        classes.push('h-marketing');
+      }
+      return classes.join(' ')
+    } else {
+      return null;
+    }
+  }
+
   return (
     <ResumeCardContainer>
         <ResumeCardContent className="ResumeCardContent">
@@ -203,7 +208,7 @@ const ResumeCard = ({ title, company, description, startDate, endDate, uid, high
                 {startAndEndDates(startDate, endDate)}
             </ResumeCardBlurb>
         </ResumeCardContent>
-        <ResumeCardDescripContainer className="ResumeCardDescripContainer">
+        <ResumeCardDescripContainer className={`ResumeCardDescripContainer ${generateHighlightClasses()}`}>
             {RichText.render(description)}
         </ResumeCardDescripContainer>
     </ResumeCardContainer>
