@@ -167,7 +167,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
   }
 
   const skillButtonText = (skill) => {
-    return highlightedSkills[skill] ? "Disable Highlighting" : "Highlight"
+    return highlightedSkills[skill] ? "Disable Highlighting" : "Highlight Below"
   }
 
   return (
@@ -181,6 +181,7 @@ const SkillsGrid = ({ onSelect, highlightedSkills }) => {
                   <ul>
                     <li>Excel</li>
                     <li>SQL</li>
+                    <li>Python</li>
                     <li>MongoDB</li>
                     <li>Tableau</li>
                     <li>Google Analytics (Certified)</li>
