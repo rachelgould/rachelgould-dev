@@ -86,7 +86,7 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
                         startDate={entry.node.start_date}
                         endDate={entry.node.end_date}
                         uid={entry.node._meta.uid}
-                        highlightedSkills={highlightedSkills}
+                        highlightSkills={highlightedSkills}
                     />
                 ))}
             </>
