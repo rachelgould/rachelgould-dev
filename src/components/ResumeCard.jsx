@@ -189,7 +189,8 @@ const startAndEndDates = (startDate, endDate) => {
   }
 }
 
-const ResumeCard = ({ title, company, description, startDate, endDate, uid, highlightSkills}) => (
+const ResumeCard = ({ title, company, description, startDate, endDate, uid, highlightSkills}) => {
+  return (
     <ResumeCardContainer>
         <ResumeCardContent className="ResumeCardContent">
             <ResumeCardCategory>
@@ -206,7 +207,8 @@ const ResumeCard = ({ title, company, description, startDate, endDate, uid, high
             {RichText.render(description)}
         </ResumeCardDescripContainer>
     </ResumeCardContainer>
-)
+  )
+}
 
 export default ResumeCard;
 
