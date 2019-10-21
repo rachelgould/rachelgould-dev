@@ -3,12 +3,22 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "@emotion/styled";
+import colors from "styles/colors";
 import Layout from "components/Layout";
 import ResumeCard from "components/ResumeCard";
 import SkillsGrid from "components/SkillsGrid";
 
 const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
+`
+
+const ResumeTitleWithCaption = styled("h1")`
+    margin-bottom: 0em;
+`
+
+const ResumeTitleCaption = styled("p")`
+    margin-bottom: 2.5em;
+    color: ${colors.grey700}
 `
 
 const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }) => {
@@ -70,9 +80,12 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
             ].concat(meta)}
         />
         <Layout>
-            <ResumeTitle>
+            <ResumeTitleWithCaption>
                 Highlighted Skills
-            </ResumeTitle>
+            </ResumeTitleWithCaption>
+            <ResumeTitleCaption>
+                Click the skills below to highlight relevant experience on my resume.
+            </ResumeTitleCaption>
             <SkillsGrid onSelect={highlightSkills} highlightedSkills={highlightedSkills} />
             <ResumeTitle>
                 Work Experience

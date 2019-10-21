@@ -154,7 +154,7 @@ Project.propTypes = {
 export const query = graphql`
     query ProjectQuery($uid: String) {
         prismic {
-            allProjects(uid: $uid) {
+            allProjects(uid: $uid, sortBy: project_post_date_DESC) {
                 edges {
                     node {
                         project_title
