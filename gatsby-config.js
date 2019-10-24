@@ -43,13 +43,13 @@ module.exports = {
       },
     },
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-            trackingId: env.GATSBY_GA_TRACKING_ID,
-            head: true,
-        },
-    },
+    // {
+    //     resolve: `gatsby-plugin-google-analytics`,
+    //     options: {
+    //         trackingId: env.GATSBY_GA_TRACKING_ID,
+    //         head: true,
+    //     },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
