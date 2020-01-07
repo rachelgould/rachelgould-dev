@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Rachel Gould | Analyst, Marketer, Developer`,
-        description: `Multi-disciplinary digital marketing expert and data analyst working in Vancouver, BC.`,
+    title: `Rachel Gould - Web Development and Digital Marketing`,
+        description: `Multi-disciplinary digital marketing expert and web developer working in Vancouver, BC.`,
     author: `Rachel Gould`,
   },
   plugins: [
