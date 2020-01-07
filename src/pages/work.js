@@ -10,7 +10,22 @@ const WorkTitle = styled("h1")`
     margin-bottom: 1em;
 `
 
-const Work = ({ projects, meta }) => (
+const Work = ({ projects, meta }) => {
+  const makeEntryCards = (entries) => {
+    let sortedEntries = entries.sort((a, b) => (a.node.end_date > b.node.end_date) ? 1 : -1)
+
+    return sortedEntries.map((project, i) => (
+      <ProjectCard
+          key={i}
+          category={project.node.project_category}
+          title={project.node.project_title}
+          description={project.node.project_preview_description}
+          thumbnail={project.node.project_preview_thumbnail}
+          uid={project.node._meta.uid}
+      />
+    ))
+  }
+  return (
     <>
         <Helmet
             title={`Projects | RachelGould.dev`}
@@ -55,20 +70,12 @@ const Work = ({ projects, meta }) => (
                 Projects
             </WorkTitle>
             <>
-                {projects.map((project, i) => (
-                    <ProjectCard
-                        key={i}
-                        category={project.node.project_category}
-                        title={project.node.project_title}
-                        description={project.node.project_preview_description}
-                        thumbnail={project.node.project_preview_thumbnail}
-                        uid={project.node._meta.uid}
-                    />
-                ))}
+                {makeEntryCards(projects)}
             </>
         </Layout>
     </>
-);
+  );
+}
 
 export default ({ data }) => {
     const projects = data.prismic.allProjects.edges;
