@@ -7,6 +7,7 @@ import { Link, graphql } from 'gatsby';
 import { RichText } from "prismic-reactjs";
 import Button from "components/_ui/Button";
 import Layout from "components/Layout";
+import metaTruncate from "../utils/lazyMetaDescrip";
 
 const ProjectHeroContainer = styled("div")`
     // background: ${colors.grey200};
@@ -70,73 +71,75 @@ text-align: center;
 
 
 const Project = ({ project, meta }) => {
-    return (
-        <>
-            <Helmet
-                title={`${project.project_title[0].text} | RachelGould.dev`}
-                titleTemplate={`%s | ${meta.title}`}
-                meta={[
-                    {
-                        name: `description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:title`,
-                        content: `${project.project_title[0].text} | RachelGould.dev`,
-                    },
-                    {
-                        property: `og:description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:type`,
-                        content: `website`,
-                    },
-                    {
-                        name: `twitter:card`,
-                        content: `summary`,
-                    },
-                    {
-                        name: `twitter:creator`,
-                        content: meta.author,
-                    },
-                    {
-                        name: `twitter:title`,
-                        content: meta.title,
-                    },
-                    {
-                        name: `twitter:description`,
-                        content: meta.description,
-                    },
-                ].concat(meta)}
-            />
-            <Layout>
-                {project.project_hero_image && (
-                    <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="bees" />
-                    </ProjectHeroContainer>
-                )}
-                <ProjectTitle>
-                    {RichText.render(project.project_title)}
-                </ProjectTitle>
-                <ProjectBody>
-                    {RichText.render(project.project_description)}
-                    <ButtonContainer>
-                      <ExternalLink href={project.view_more_link.url}>
-                          <Button className="Button--primary">
-                              Code on GitHub
-                          </Button>
-                      </ExternalLink>
-                      <WorkLink to={"/work"}>
-                          <Button className="Button--primary">
-                              See Other Projects
-                          </Button>
-                      </WorkLink>
-                    </ButtonContainer>
-                </ProjectBody>
-            </Layout>
-        </>
-    )
+  const metaDescription = metaTruncate(`${project.project_preview_description[0]['text']} A ${project.project_category[0]['text']} project using ${project.project_description[0]['text']}.`);
+
+  return (
+      <>
+          <Helmet
+              title={`${project.project_title[0].text}`}
+              titleTemplate={`%s | ${meta.title}`}
+              meta={[
+                  {
+                      name: `description`,
+                      content: metaDescription,
+                  },
+                  {
+                      property: `og:title`,
+                      content: `${project.project_title[0].text} | RachelGould.dev`,
+                  },
+                  {
+                      property: `og:description`,
+                      content: metaDescription,
+                  },
+                  {
+                      property: `og:type`,
+                      content: `website`,
+                  },
+                  {
+                      name: `twitter:card`,
+                      content: `summary`,
+                  },
+                  {
+                      name: `twitter:creator`,
+                      content: meta.author,
+                  },
+                  {
+                      name: `twitter:title`,
+                      content: meta.title,
+                  },
+                  {
+                      name: `twitter:description`,
+                      content: metaDescription,
+                  },
+              ].concat(meta)}
+          />
+          <Layout>
+              {project.project_hero_image && (
+                  <ProjectHeroContainer>
+                      <img src={project.project_hero_image.url} />
+                  </ProjectHeroContainer>
+              )}
+              <ProjectTitle>
+                  {RichText.render(project.project_title)}
+              </ProjectTitle>
+              <ProjectBody>
+                  {RichText.render(project.project_description)}
+                  <ButtonContainer>
+                    <ExternalLink href={project.view_more_link.url}>
+                        <Button className="Button--primary">
+                            Code on GitHub
+                        </Button>
+                    </ExternalLink>
+                    <WorkLink to={"/work"}>
+                        <Button className="Button--primary">
+                            See Other Projects
+                        </Button>
+                    </WorkLink>
+                  </ButtonContainer>
+              </ProjectBody>
+          </Layout>
+      </>
+  )
 }
 
 export default ({ data }) => {
