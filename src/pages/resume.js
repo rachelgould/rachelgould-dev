@@ -7,6 +7,7 @@ import colors from "styles/colors";
 import Layout from "components/Layout";
 import ResumeCard from "components/ResumeCard";
 import SkillsGrid from "components/SkillsGrid";
+import metaTruncate from "../utils/lazyMetaDescrip";
 
 const ResumeTitle = styled("h1")`
     margin-bottom: 1em;
@@ -20,6 +21,10 @@ const ResumeTitleCaption = styled("p")`
     margin-bottom: 2.5em;
     color: ${colors.grey700}
 `
+
+const metaDescription = metaTruncate(
+  "Rachel Gould is a digital marketer, web developer and data analyst in Vancouver BC. View her online resume."
+)
 
 const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }) => {
   const makeEntryCards = (entries) => {
@@ -43,11 +48,11 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
     <>
         <Helmet
             title={`Resume | RachelGould.dev`}
-            titleTemplate={`%s | Resume | RachelGould.dev`}
+            titleTemplate={`%s`}
             meta={[
                 {
                     name: `description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
                 {
                     property: `og:title`,
@@ -55,7 +60,7 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
                 },
                 {
                     property: `og:description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
                 {
                     property: `og:type`,
@@ -75,7 +80,7 @@ const Resume = ({ entries, education, meta, highlightSkills, highlightedSkills }
                 },
                 {
                     name: `twitter:description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
             ].concat(meta)}
         />
@@ -165,7 +170,6 @@ export const query = graphql`
         site {
             siteMetadata {
                 title
-                description
                 author
             }
         }

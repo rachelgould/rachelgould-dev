@@ -5,10 +5,15 @@ import { graphql } from "gatsby";
 import styled from "@emotion/styled";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
+import metaTruncate from "../utils/lazyMetaDescrip";
 
 const WorkTitle = styled("h1")`
     margin-bottom: 1em;
 `
+
+const metaDescription = metaTruncate(
+  "View Rachel's online portfolio. From bulk-editing WooCommerce orders with the Python API to a recipe organizer single-page app."
+)
 
 const Work = ({ projects, meta }) => {
   const makeEntryCards = (entries) => {
@@ -29,11 +34,11 @@ const Work = ({ projects, meta }) => {
     <>
         <Helmet
             title={`Projects | RachelGould.dev`}
-            titleTemplate={`%s | Projects | RachelGould.dev`}
+            titleTemplate={`%s`}
             meta={[
                 {
                     name: `description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
                 {
                     property: `og:title`,
@@ -41,7 +46,7 @@ const Work = ({ projects, meta }) => {
                 },
                 {
                     property: `og:description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
                 {
                     property: `og:type`,
@@ -61,7 +66,7 @@ const Work = ({ projects, meta }) => {
                 },
                 {
                     name: `twitter:description`,
-                    content: meta.description,
+                    content: metaDescription,
                 },
             ].concat(meta)}
         />
@@ -112,7 +117,6 @@ export const query = graphql`
         site {
             siteMetadata {
                 title
-                description
                 author
             }
         }

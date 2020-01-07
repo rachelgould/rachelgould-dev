@@ -95,7 +95,7 @@ const RenderBody = ({ home, projects, meta }) => (
     <>
         <Helmet
             title={meta.title}
-            titleTemplate={`%s | ${meta.title}`}
+            titleTemplate={`%s`}
             meta={[
                 {
                     name: `description`,
@@ -152,7 +152,7 @@ const RenderBody = ({ home, projects, meta }) => (
                     uid={project.node._meta.uid}
                 />
             ))}
-            <WorkAction to={"/work"}>
+            <WorkAction to={"/work/"}>
                 See more work <span>&#8594;</span>
             </WorkAction>
         </Section>
